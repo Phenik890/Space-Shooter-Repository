@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-D:/Programs/Unity/Projects/Space Shooter/Space Shooter/Builds/Scene 1/Space Shooter.exe
+D:/Programs/Unity/Projects/Space Shooter/Space Shooter/Builds/Final Version/Space Shooter.exe
 SceneListBegin?
 Assets/Scenes/Space Shooter Tutorial.unity
 SceneListEnd?
