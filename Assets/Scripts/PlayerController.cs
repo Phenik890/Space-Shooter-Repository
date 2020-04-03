@@ -10,8 +10,8 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour
 {
-	public Rigidbody rigidbody;
-	public AudioSource audio;
+	public Rigidbody rigidBody;
+	public AudioSource audioSource;
 	public float speed;
 	public float tilt;
 	public Boundary boundary;
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
-		rigidbody = GetComponent<Rigidbody>();
-		audio = GetComponent<AudioSource>();
+		rigidBody = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			audio.Play();
+			audioSource.Play();
 		}
 	}
 
@@ -43,15 +43,15 @@ public class PlayerController : MonoBehaviour
 		float moveVertical = Input.GetAxis("Vertical");
 
 		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-		rigidbody.velocity = movement * speed;
+		rigidBody.velocity = movement * speed;
 
-		rigidbody.position = new Vector3
+		rigidBody.position = new Vector3
 		(
-			Mathf.Clamp(rigidbody.position.x, boundary.xMin, boundary.xMax),
+			Mathf.Clamp(rigidBody.position.x, boundary.xMin, boundary.xMax),
 			0.0f,
-			Mathf.Clamp(rigidbody.position.z, boundary.zMin, boundary.zMax)
+			Mathf.Clamp(rigidBody.position.z, boundary.zMin, boundary.zMax)
 		);
 
-		rigidbody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidbody.velocity.x * -tilt);
+		rigidBody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidBody.velocity.x * -tilt);
 	}
 }
